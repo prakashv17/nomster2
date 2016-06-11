@@ -1,0 +1,19 @@
+<div class="booyah-box col-xs-10 col-xs-offset-1">
+  <h1><%= @places.name %></h1>
+  <i><%= @places.address %></i>
+  <br/><br/>
+  <p><%= @places.description %></p>
+
+  <div class="pull-left">
+  	<%if current_user && current_user == @places.user %>
+  		<%= link_to 'Edit', edit_place_path(@places), class: 'btn btn-primary' %>
+  	<% end %>
+  </div>
+
+  <div class="pull-right">
+  	<%if current_user && current_user == @places.user %>
+  		<%= link_to 'Delete', place_path(@places), method: :delete, data: {confirm: 'Are you sure you want to delete this?'},class: 'btn btn-primary' %>
+  	 <% end %>
+  </div>
+
+</div>
