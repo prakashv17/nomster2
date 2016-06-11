@@ -13,8 +13,14 @@ gem 'pg'
 # Will paginate gem for Pagination
 gem 'will_paginate'
 
+#Figaro gem for privacy of passwords 
+gem "figaro", ">= 1.0.0"
+
 # Use SCSS for stylesheets
 # This gem is already added in the bootstrap section
+
+#Map gem
+gem "geocoder", "1.3.4"
 
 #Boostrap
 gem 'bootstrap-sass', '~> 3.3.5.1'
