@@ -46,4 +46,52 @@
   	 <% end %>
   </div>
 
+  <br />
+  <br />
+  <br />
+    
+    <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Add a Comment</h4>
+            </div>
+            <div class="modal-body">
+                <%= simple_form_for @comment, url: place_comments_path(@places) do |comment| %>
+                  <%= comment.input :message %>
+                  <%= comment.input :rating, as: :select, collection: Comment::RATINGS %>    
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <%= comment.submit 'Add a Comment', class: 'btn btn-primary' %>
+                  <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-10">
+        <h2 class="pull-left">Comments</h2>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#myModal">
+            Add a Comment
+          </button>
+      </div>
+
+          <div class="clear"></div>
+
+        <% @places.comments.each do |c| %>
+          <div class="col-xs-12 col-sm-6">
+            <blockquote>
+                <b><i><%= c.message %></i></b> - 
+                  <% if c.humanized_rating.present? %>
+                    <i><%= c.humanized_rating %></i>
+                  <% end %>
+                <small><%= c.user.email %></small>
+            </blockquote>
+        </div>
+      <% end %>
+
 </div>
